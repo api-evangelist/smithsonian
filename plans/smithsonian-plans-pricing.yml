@@ -1,0 +1,79 @@
+name: Smithsonian Open Access API Plans and Pricing
+description: The Smithsonian Open Access API is free to use for all purposes. API
+  keys are obtained through api.data.gov, the US Government's shared API management
+  platform. There are no paid tiers or commercial licensing fees as all content is
+  released under CC0 (public domain) license.
+url: https://api.data.gov/signup/
+created: '2026-06-13'
+modified: '2026-06-13'
+plans:
+  - name: DEMO_KEY (No Registration)
+    description: Limited access for exploring the API without registration. Suitable
+      for initial testing and evaluation only. Key is IP-address-based and shared
+      across all users on that IP.
+    url: https://api.data.gov/docs/developer-manual/
+    free: true
+    pricing: Free
+    rateLimits:
+      - type: requests
+        period: hour
+        limit: 30
+        unit: per IP address
+      - type: requests
+        period: day
+        limit: 50
+        unit: per IP address
+    features:
+      - Search the Smithsonian Open Access collections
+      - Retrieve object metadata and content
+      - Browse collections by category
+      - Access CC0-licensed digital assets
+    authentication: None (IP-based)
+  - name: Standard API Key
+    description: Full access for registered developers. Free registration via api.data.gov
+      provides a personal API key enabling higher rate limits. No credit card or
+      payment information required.
+    url: https://api.data.gov/signup/
+    free: true
+    pricing: Free
+    rateLimits:
+      - type: requests
+        period: hour
+        limit: 1000
+        unit: per API key
+    features:
+      - All DEMO_KEY features
+      - Higher rate limits (1,000 requests/hour)
+      - Personal API key (40-character unique string)
+      - Access to all 4.7M+ digitized collection objects
+      - Search across art and design, history and culture, science and technology
+      - Object content retrieval by ID or URL
+      - CC0 metrics and statistics endpoints
+      - Term browsing by culture, date, object type, media type, place, topic
+      - Multiple sort options (relevancy, ID, newest, updated, random)
+    authentication: API Key (via api.data.gov)
+  - name: High-Volume Access
+    description: For organizations requiring more than 1,000 requests per hour, custom
+      arrangements must be negotiated directly with the Smithsonian Institution. No
+      official pricing tiers are published; contact the Open Access team directly.
+    url: https://www.si.edu/openaccess
+    free: false
+    pricing: Custom / Contact Required
+    rateLimits:
+      - type: requests
+        period: hour
+        limit: Custom
+        unit: negotiated
+    features:
+      - All Standard API Key features
+      - Custom rate limits above 1,000 requests/hour
+      - Bulk data access (also available via AWS S3)
+    authentication: API Key (custom arrangement)
+    contact: openaccess@si.edu
+notes:
+  - All Smithsonian Open Access content is CC0 (public domain) - no licensing fees apply
+  - Bulk data is also available as a free S3 dataset at s3://smithsonian-open-access (no-sign-request)
+  - The S3 dataset is updated weekly and contains 2.8M+ CC0 images and metadata
+  - API keys are managed through api.data.gov, the US Government API infrastructure
+  - Rate limit headers (X-RateLimit-Limit, X-RateLimit-Remaining) are returned with every response
+  - HTTP 429 responses indicate rate limit exceeded; limits reset on a rolling hourly basis

@@ -1,0 +1,73 @@
+aid: smithsonian
+name: Smithsonian Institution
+description: Smithsonian Institution Open Access REST API providing search and retrieval
+  of over 4.7 million digitized objects, images, 3D models, and metadata across 19
+  museums and research centers. All content is released under CC0 (public domain)
+  and covers art and design, history and culture, and science and technology collections.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/smithsonian/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Museums
+  - Open Access
+  - Cultural Heritage
+  - Collections
+  - Images
+  - 3D Models
+  - Public Domain
+  - CC0
+apis:
+  - aid: smithsonian:smithsonian-open-access-api
+    name: Smithsonian Open Access API
+    description: REST API providing programmatic access to millions of digitized Smithsonian
+      collection objects, metadata, images, and 3D models across 19 museums and research
+      centers. Supports search, content retrieval, and term browsing via a free API
+      key from api.data.gov.
+    humanURL: https://edan.si.edu/openaccess/apidocs/
+    baseURL: https://api.si.edu/openaccess/api/v1.0
+    tags:
+      - Search
+      - Collections
+      - Objects
+      - Museums
+      - Metadata
+      - Open Data
+    properties:
+      - type: Documentation
+        url: https://edan.si.edu/openaccess/apidocs/
+      - type: OpenAPI
+        url: https://edan.si.edu/openaccess/apidocs/
+      - type: Authentication
+        url: https://api.data.gov/signup/
+    contact:
+      - FN: Smithsonian Open Access Team
+        email: openaccess@si.edu
+common:
+  - type: Website
+    url: https://www.si.edu
+  - type: Documentation
+    url: https://edan.si.edu/openaccess/apidocs/
+  - type: GitHubOrg
+    url: https://github.com/Smithsonian
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/smithsonian-institution
+  - type: Blog
+    url: https://www.si.edu/openaccess
+  - type: Pricing
+    url: https://api.data.gov/signup/
+  - type: StatusPage
+    url: https://api.data.gov/
+  - type: X
+    url: https://twitter.com/smithsonian
+  - type: Plans
+    url: plans/smithsonian-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/smithsonian-rate-limits.yml
+  - type: FinOps
+    url: finops/smithsonian-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

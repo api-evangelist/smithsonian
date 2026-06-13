@@ -1,0 +1,80 @@
+name: Smithsonian Open Access API Rate Limits
+description: Rate limits for the Smithsonian Open Access API are managed through
+  api.data.gov, the US Government's shared API management infrastructure. Limits
+  vary by authentication tier. All limits reset on a rolling hourly basis.
+url: https://api.data.gov/docs/developer-manual/
+created: '2026-06-13'
+modified: '2026-06-13'
+rateLimits:
+  - tier: DEMO_KEY
+    description: Rate limits for unauthenticated access using the DEMO_KEY (no registration required)
+    limits:
+      - type: requests
+        period: hour
+        limit: 30
+        unit: per IP address
+        enforcement: HTTP 429 Too Many Requests
+      - type: requests
+        period: day
+        limit: 50
+        unit: per IP address
+        enforcement: HTTP 429 Too Many Requests
+    headers:
+      - name: X-RateLimit-Limit
+        description: Your current hourly rate limit ceiling
+      - name: X-RateLimit-Remaining
+        description: Number of requests remaining in the current hour window
+    resetPolicy: Rolling hourly; blocks lift automatically after one hour
+  - tier: Standard API Key
+    description: Rate limits for registered developers with a personal API key from api.data.gov
+    limits:
+      - type: requests
+        period: hour
+        limit: 1000
+        unit: per API key
+        enforcement: HTTP 429 Too Many Requests
+    headers:
+      - name: X-RateLimit-Limit
+        description: Your current hourly rate limit ceiling (1000 for standard keys)
+      - name: X-RateLimit-Remaining
+        description: Number of requests remaining in the current hour window
+    resetPolicy: Rolling hourly; blocks lift automatically after one hour
+  - tier: High-Volume (Custom)
+    description: Custom rate limits negotiated directly with the Smithsonian for high-volume consumers
+    limits:
+      - type: requests
+        period: hour
+        limit: Custom
+        unit: negotiated
+        enforcement: Per custom agreement
+    contact: openaccess@si.edu
+authentication:
+  methods:
+    - type: HTTP Header
+      header: X-Api-Key
+      example: "X-Api-Key: YOUR_API_KEY_HERE"
+    - type: Query Parameter
+      parameter: api_key
+      example: "https://api.si.edu/openaccess/api/v1.0/search?q=moon&api_key=YOUR_KEY"
+    - type: HTTP Basic Auth
+      description: Pass API key as username with an empty password field
+  registration: https://api.data.gov/signup/
+  keyFormat: 40-character alphanumeric string
+  transport: HTTPS required for all requests
+errorHandling:
+  rateLimitExceeded:
+    httpStatus: 429
+    description: Too Many Requests - rate limit exceeded
+    resolution: Wait for the rolling hourly window to reset; reduce request frequency
+  unauthenticated:
+    httpStatus: 403
+    description: Forbidden - missing or invalid API key
+    resolution: Register at api.data.gov/signup and include a valid API key
+bulkDataAlternative:
+  description: For bulk access, the full dataset is available as a free AWS S3 dataset
+    that avoids API rate limits entirely
+  bucket: s3://smithsonian-open-access
+  region: us-west-2
+  access: No authentication required (--no-sign-request)
+  updateSchedule: Weekly
+  command: "aws s3 ls --no-sign-request s3://smithsonian-open-access/"

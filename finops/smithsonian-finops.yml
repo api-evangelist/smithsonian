@@ -1,0 +1,73 @@
+name: Smithsonian Open Access API FinOps
+description: Financial operations profile for the Smithsonian Open Access API. The
+  API itself is free with no direct monetary costs. Cost considerations are limited
+  to downstream infrastructure when consuming bulk data via AWS S3 or building applications
+  on top of the API.
+url: https://www.si.edu/openaccess
+created: '2026-06-13'
+modified: '2026-06-13'
+costModel:
+  type: Free / Public Good
+  description: The Smithsonian Open Access API carries no direct cost to consumers.
+    It is funded by the Smithsonian Institution (a US federal trust instrumentality)
+    and operated as a public service. All content is released under CC0 (public domain).
+  apiCost: $0.00
+  registrationCost: $0.00
+  dataLicensingCost: $0.00
+directCosts:
+  - category: API Access
+    cost: Free
+    notes: No charges for API calls regardless of volume (within rate limits)
+  - category: API Key Registration
+    cost: Free
+    notes: Registration via api.data.gov requires no payment information
+  - category: Content Licensing
+    cost: Free
+    notes: All Open Access content is CC0 (public domain) with no licensing fees
+indirectCosts:
+  - category: AWS S3 Bulk Data Egress
+    description: When accessing bulk data via the public S3 bucket (s3://smithsonian-open-access),
+      AWS may charge standard data transfer fees on the consumer's AWS account for
+      data downloaded out of us-west-2.
+    estimatedCost: AWS standard egress rates (varies by volume and destination)
+    mitigation: Use AWS services in us-west-2 to minimize inter-region transfer costs
+  - category: Developer Time (Integration)
+    description: Engineering effort to integrate with the API and process collection
+      metadata in various formats (JSON, XML, CSV, RDF).
+    estimatedCost: Variable — API is well-documented with Python SDK available (si_openaccess)
+  - category: Storage (Bulk Data)
+    description: If mirroring or caching the S3 bulk dataset (~2.8M+ CC0 images),
+      storage costs apply on the consumer's infrastructure.
+    estimatedCost: Variable — dataset is multi-terabyte and grows weekly
+  - category: Compute
+    description: Processing and indexing 4.7M+ collection records requires compute
+      resources on the consumer side.
+    estimatedCost: Variable
+budgetGuidance:
+  smallTeams: No budget required for standard API access. Register at api.data.gov
+    for a free key and start building immediately. Budget only for engineering time.
+  largeOrganizations: For bulk data ingestion via S3, plan for AWS egress costs and
+    storage. Consider running workloads in us-west-2 (same region as the S3 bucket)
+    to reduce transfer costs. Contact openaccess@si.edu for high-volume API needs.
+  costOptimization:
+    - Use the S3 bulk dataset for initial data loads; use the API for incremental updates
+    - The S3 dataset updates weekly — sync incrementally rather than full re-download
+    - Cache API responses locally to stay within the 1,000 requests/hour limit
+    - Use the DEMO_KEY only for prototyping; register a full key before production use
+    - Use search_terms endpoint to pre-filter queries and reduce unnecessary API calls
+openSourceTools:
+  - name: si_openaccess Python SDK
+    url: https://pypi.org/project/si-openaccess/
+    repo: https://github.com/Smithsonian/smithsonian-openaccess
+    cost: Free (Apache 2.0)
+    description: Official Python module for querying the Smithsonian Open Access API
+  - name: Smithsonian Open Access MCP Server
+    url: https://github.com/molanojustin/smithsonian-mcp
+    cost: Free
+    description: MCP server enabling AI assistant access to the Smithsonian collections
+fundingModel:
+  provider: Smithsonian Institution (US federal trust instrumentality)
+  description: The Smithsonian Institution is funded through a combination of federal
+    appropriations and private donations. Open Access digitization and API infrastructure
+    is part of its public mission.
+  contact: openaccess@si.edu
