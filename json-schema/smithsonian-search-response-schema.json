@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/smithsonian/main/json-schema/smithsonian-search-response-schema.json",
+  "title": "Smithsonian Search Response",
+  "description": "Schema for search results returned by the Smithsonian Open Access API search endpoints.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "integer",
+      "description": "HTTP status code of the response.",
+      "example": 200
+    },
+    "responseCode": {
+      "type": "integer",
+      "description": "API-level response code. 1 indicates success, 0 indicates an error.",
+      "enum": [0, 1]
+    },
+    "response": {
+      "type": "object",
+      "properties": {
+        "rows": {
+          "type": "array",
+          "description": "Array of matching collection objects.",
+          "items": {
+            "$ref": "smithsonian-collection-object-schema.json"
+          }
+        },
+        "rowCount": {
+          "type": "integer",
+          "description": "Total number of matching records across all pages.",
+          "minimum": 0
+        },
+        "message": {
+          "type": "string",
+          "description": "Human-readable response message."
+        }
+      },
+      "required": ["rows", "rowCount"]
+    }
+  },
+  "required": ["status", "responseCode", "response"]
+}

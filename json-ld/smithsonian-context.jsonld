@@ -1,0 +1,197 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "schema": "https://schema.org/",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "foaf": "http://xmlns.com/foaf/0.1/",
+    "owl": "http://www.w3.org/2002/07/owl#",
+
+    "smithsonian": "https://api.si.edu/openaccess/vocab#",
+    "edan": "https://edan.si.edu/vocab#",
+
+    "CollectionObject": "schema:MuseumObject",
+    "DigitizedArtwork": "schema:VisualArtwork",
+    "ArchivalRecord": "schema:ArchiveComponent",
+
+    "id": "@id",
+    "type": "@type",
+
+    "title": {
+      "@id": "dc:title",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "dc:description",
+      "@type": "xsd:string"
+    },
+    "unitCode": {
+      "@id": "smithsonian:unitCode",
+      "@type": "xsd:string"
+    },
+    "linkedId": {
+      "@id": "smithsonian:linkedId",
+      "@type": "xsd:string"
+    },
+    "url": {
+      "@id": "schema:url",
+      "@type": "xsd:string"
+    },
+    "hash": {
+      "@id": "smithsonian:contentHash",
+      "@type": "xsd:string"
+    },
+    "docSignature": {
+      "@id": "smithsonian:docSignature",
+      "@type": "xsd:string"
+    },
+    "timestamp": {
+      "@id": "dcterms:created",
+      "@type": "xsd:integer"
+    },
+    "lastTimeUpdated": {
+      "@id": "dcterms:modified",
+      "@type": "xsd:integer"
+    },
+    "version": {
+      "@id": "smithsonian:version",
+      "@type": "xsd:string"
+    },
+
+    "content": {
+      "@id": "edan:content"
+    },
+    "descriptiveNonRepeating": {
+      "@id": "edan:descriptiveNonRepeating"
+    },
+    "indexedStructured": {
+      "@id": "edan:indexedStructured"
+    },
+    "freetext": {
+      "@id": "edan:freetext"
+    },
+
+    "record_ID": {
+      "@id": "edan:recordId",
+      "@type": "xsd:string"
+    },
+    "unit_code": {
+      "@id": "smithsonian:unitCode",
+      "@type": "xsd:string"
+    },
+    "title_sort": {
+      "@id": "edan:titleSort",
+      "@type": "xsd:string"
+    },
+    "data_source": {
+      "@id": "dcterms:source",
+      "@type": "xsd:string"
+    },
+    "metadata_usage": {
+      "@id": "dcterms:rights"
+    },
+    "access": {
+      "@id": "dcterms:accessRights",
+      "@type": "xsd:string"
+    },
+
+    "object_type": {
+      "@id": "schema:additionalType",
+      "@container": "@set"
+    },
+    "date": {
+      "@id": "dcterms:date",
+      "@container": "@set"
+    },
+    "topic": {
+      "@id": "dc:subject",
+      "@container": "@set"
+    },
+    "culture": {
+      "@id": "edan:culture",
+      "@container": "@set"
+    },
+    "place": {
+      "@id": "schema:locationCreated",
+      "@container": "@set"
+    },
+    "online_media_type": {
+      "@id": "schema:encodingFormat",
+      "@container": "@set"
+    },
+
+    "status": {
+      "@id": "smithsonian:httpStatus",
+      "@type": "xsd:integer"
+    },
+    "responseCode": {
+      "@id": "smithsonian:responseCode",
+      "@type": "xsd:integer"
+    },
+    "response": {
+      "@id": "smithsonian:response"
+    },
+    "rows": {
+      "@id": "smithsonian:rows",
+      "@container": "@set"
+    },
+    "rowCount": {
+      "@id": "smithsonian:rowCount",
+      "@type": "xsd:integer"
+    },
+    "message": {
+      "@id": "smithsonian:message",
+      "@type": "xsd:string"
+    },
+    "terms": {
+      "@id": "smithsonian:terms",
+      "@container": "@set"
+    },
+    "starts_with": {
+      "@id": "smithsonian:startsWith",
+      "@type": "xsd:string"
+    },
+
+    "OpenAccessAPI": {
+      "@id": "smithsonian:OpenAccessAPI",
+      "@type": "schema:WebAPI"
+    },
+    "apiBaseUrl": {
+      "@id": "schema:url",
+      "@type": "xsd:anyURI"
+    },
+    "apiVersion": {
+      "@id": "schema:version",
+      "@type": "xsd:string"
+    },
+    "apiKeySignup": {
+      "@id": "smithsonian:apiKeySignup",
+      "@type": "xsd:anyURI"
+    },
+    "license": {
+      "@id": "dcterms:license",
+      "@type": "xsd:anyURI"
+    }
+  },
+  "@graph": [
+    {
+      "@id": "https://api.si.edu/openaccess",
+      "@type": "schema:WebAPI",
+      "schema:name": "Smithsonian Open Access API",
+      "schema:description": "REST API providing programmatic access to millions of digitized Smithsonian collection objects, metadata, images, and 3D models across 19 museums and research centers.",
+      "schema:url": "https://api.si.edu/openaccess/api/v1.0",
+      "schema:documentation": "https://edan.si.edu/openaccess/apidocs/",
+      "dcterms:license": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "schema:version": "1.0.0",
+      "schema:provider": {
+        "@id": "https://www.si.edu",
+        "@type": "schema:Organization",
+        "schema:name": "Smithsonian Institution",
+        "schema:url": "https://www.si.edu",
+        "schema:email": "openaccess@si.edu"
+      }
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+vocabulary:
+  name: Smithsonian Open Access API Vocabulary
+  description: >
+    Controlled vocabulary and enumerated values used by the Smithsonian Institution
+    Open Access API. These terms are used for filtering, categorization, and faceted
+    search across 4.7 million digitized collection objects from 19 museums and
+    research centers.
+  version: 1.0.0
+  source: https://edan.si.edu/openaccess/apidocs/
+  terms:
+
+    categories:
+      description: Top-level content categories for the Smithsonian collections.
+      values:
+        - value: art_design
+          label: Art & Design
+          description: Visual arts, design objects, decorative arts, and related materials.
+        - value: history_culture
+          label: History & Culture
+          description: Historical artifacts, cultural objects, archival materials, and heritage items.
+        - value: science_technology
+          label: Science & Technology
+          description: Natural history specimens, scientific instruments, and technology artifacts.
+
+    sort_options:
+      description: Available sort orders for search result sets.
+      values:
+        - value: relevancy
+          label: Relevancy
+          description: Default sort by relevance score (highest relevance first).
+        - value: id
+          label: ID
+          description: Sort alphabetically by record ID.
+        - value: newest
+          label: Newest
+          description: Sort by record timestamp in descending order (most recently added first).
+        - value: updated
+          label: Recently Updated
+          description: Sort by lastTimeUpdated in descending order (most recently changed first).
+        - value: random
+          label: Random
+          description: Return results in a random order.
+
+    object_types:
+      description: EDAN content types for collection objects.
+      values:
+        - value: edanmdm
+          label: EDAN Metadata Module
+          description: Standard Smithsonian object/artifact record with descriptive metadata.
+        - value: ead_collection
+          label: EAD Collection
+          description: Encoded Archival Description finding aid collection record.
+        - value: ead_component
+          label: EAD Component
+          description: Encoded Archival Description finding aid component (series, folder, item).
+        - value: all
+          label: All Types
+          description: Search across all object types.
+
+    row_groups:
+      description: High-level groupings of collection object types.
+      values:
+        - value: objects
+          label: Objects
+          description: Objects, artifacts, and specimens (edanmdm records).
+        - value: archives
+          label: Archives
+          description: Archival collections and item records (EAD records).
+
+    term_categories:
+      description: Facet categories available via the /terms endpoint.
+      values:
+        - value: culture
+          label: Culture
+          description: Cultural affiliation of the collection object.
+        - value: data_source
+          label: Data Source
+          description: Originating Smithsonian museum or unit contributing the record.
+        - value: date
+          label: Date
+          description: Date or date range associated with the object.
+        - value: object_type
+          label: Object Type
+          description: Classification type of the object (e.g. Paintings, Fossils).
+        - value: online_media_type
+          label: Online Media Type
+          description: Type of digital media available (e.g. Images, 3D Models, Audio).
+        - value: place
+          label: Place
+          description: Geographic location associated with the object.
+        - value: topic
+          label: Topic
+          description: Thematic subject matter or topic of the object.
+        - value: unit_code
+          label: Unit Code
+          description: Code identifying the Smithsonian museum or research center.
+
+    unit_codes:
+      description: Smithsonian Institution museum and research center unit codes.
+      values:
+        - value: AAA
+          label: Archives of American Art
+        - value: ACAH
+          label: Archives Center, National Museum of American History
+        - value: CFCHFOLKLIFE
+          label: Center for Folklife and Cultural Heritage
+        - value: CHNDM
+          label: Cooper Hewitt, Smithsonian Design Museum
+        - value: FGA
+          label: Freer Gallery of Art
+        - value: FSG
+          label: Freer and Sackler Galleries
+        - value: HAC
+          label: Hirshhorn Museum and Sculpture Garden
+        - value: HM
+          label: Hirshhorn Museum
+        - value: NAA
+          label: National Anthropological Archives
+        - value: NASM
+          label: National Air and Space Museum
+        - value: NMAH
+          label: National Museum of American History
+        - value: NMAAHC
+          label: National Museum of African American History and Culture
+        - value: NMAI
+          label: National Museum of the American Indian
+        - value: NMNH
+          label: National Museum of Natural History
+        - value: NPG
+          label: National Portrait Gallery
+        - value: NZPBIOLOGY
+          label: Smithsonian's National Zoo and Conservation Biology Institute
+        - value: SAAM
+          label: Smithsonian American Art Museum
+        - value: SIA
+          label: Smithsonian Institution Archives
+        - value: STRI
+          label: Smithsonian Tropical Research Institute

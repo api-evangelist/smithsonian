@@ -1,0 +1,60 @@
+{
+  "status": 200,
+  "responseCode": 1,
+  "response": {
+    "id": "edanmdm-nmaahc_2012.36.4ab",
+    "title": "Drumsticks used by Art Blakey",
+    "unitCode": "NMAAHC",
+    "linkedId": "",
+    "type": "edanmdm",
+    "url": "edanmdm:nmaahc_2012.36.4ab",
+    "content": {
+      "descriptiveNonRepeating": {
+        "record_ID": "nmaahc_2012.36.4ab",
+        "unit_code": "NMAAHC",
+        "title_sort": "Drumsticks used by Art Blakey",
+        "title": {
+          "label": "Title",
+          "content": "Drumsticks used by Art Blakey"
+        },
+        "data_source": "NMAAHC",
+        "metadata_usage": {
+          "access": "CC0"
+        }
+      },
+      "indexedStructured": {
+        "object_type": ["Percussion Instruments", "Musical Instruments"],
+        "date": ["1950s-1960s"],
+        "topic": ["Music", "Jazz"],
+        "culture": ["African American"],
+        "place": ["United States"]
+      },
+      "freetext": {
+        "date": [
+          {
+            "label": "Date",
+            "content": "mid 20th century"
+          }
+        ],
+        "physicalDescription": [
+          {
+            "label": "Medium",
+            "content": "Wood"
+          }
+        ],
+        "notes": [
+          {
+            "label": "Description",
+            "content": "Drumsticks used by jazz musician Art Blakey, leader of the Jazz Messengers."
+          }
+        ]
+      }
+    },
+    "hash": "b4c4a61ab9b71eb8777e50b5745c4ab0c75d1999",
+    "docSignature": "32081c6289db2620a3d2e61f453ad9330d071335_08dc8e60c5b2eeb3e60dcd71f40072f5",
+    "timestamp": 1578947538,
+    "lastTimeUpdated": 1578947529,
+    "version": "123-1559922770904-1559922814561-0"
+  },
+  "message": "content found"
+}

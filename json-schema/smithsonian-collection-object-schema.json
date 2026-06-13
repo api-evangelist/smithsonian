@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/smithsonian/main/json-schema/smithsonian-collection-object-schema.json",
+  "title": "Smithsonian Collection Object",
+  "description": "Schema for a digitized Smithsonian collection object returned by the Open Access API.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the collection object.",
+      "examples": ["edanmdm-nmaahc_2012.36.4ab"]
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the collection object."
+    },
+    "unitCode": {
+      "type": "string",
+      "description": "Code identifying the Smithsonian museum or research unit.",
+      "examples": ["NMAAHC", "NMNH", "SAAM", "NASM", "NMAH", "NPG", "CHNDM", "HM", "FGA", "AAA", "ACAH", "CFCHFOLKLIFE", "FSG", "HAC", "NAA", "NMAI", "SIA", "NZPBIOLOGY", "STRI"]
+    },
+    "linkedId": {
+      "type": "string",
+      "description": "Linked identifier if the object is associated with another record."
+    },
+    "type": {
+      "type": "string",
+      "description": "Object type determining the content schema.",
+      "enum": ["edanmdm", "ead_collection", "ead_component", "all"]
+    },
+    "url": {
+      "type": "string",
+      "description": "Canonical URL identifier for the object.",
+      "examples": ["edanmdm:nmaahc_2012.36.4ab"]
+    },
+    "content": {
+      "type": "object",
+      "description": "Type-specific content metadata. Structure varies by object type.",
+      "additionalProperties": true
+    },
+    "hash": {
+      "type": "string",
+      "description": "SHA-1 content hash of the record.",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "docSignature": {
+      "type": "string",
+      "description": "Document signature for integrity checking."
+    },
+    "timestamp": {
+      "type": "integer",
+      "description": "Unix timestamp when the record was created in the system.",
+      "minimum": 0
+    },
+    "lastTimeUpdated": {
+      "type": "integer",
+      "description": "Unix timestamp when the record was last updated.",
+      "minimum": 0
+    },
+    "version": {
+      "type": "string",
+      "description": "Version identifier string for the record."
+    }
+  },
+  "required": ["id", "title", "unitCode", "type", "url"]
+}
