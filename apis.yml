@@ -5,7 +5,7 @@ description: Smithsonian Institution Open Access REST API providing search and r
   museums and research centers. All content is released under CC0 (public domain)
   and covers art and design, history and culture, and science and technology collections.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/smithsonian/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
