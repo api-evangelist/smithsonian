@@ -2,10 +2,11 @@
   "repo": "smithsonian",
   "feeds": [
     {
-      "source": "https://www.linkedin.com/company/smithsonian-institution",
-      "error": "HTTPError"
+      "source": "https://www.si.edu/openaccess",
+      "saved": 0,
+      "error": "HTTP 403 bot verification"
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "fetched": "2026-06-27T13:10:20Z"
 }
