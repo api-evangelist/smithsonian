@@ -46,6 +46,8 @@ apis:
       - FN: Smithsonian Open Access Team
         email: openaccess@si.edu
 common:
+  - type: AgenticAccess
+    url: agentic-access/smithsonian-agentic-access.yml
   - type: DomainSecurity
     url: security/smithsonian-domain-security.yml
   - type: Authentication
