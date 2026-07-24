@@ -1,0 +1,179 @@
+openapi: 3.0.3
+info:
+  title: Smithsonian Open Access content API
+  description: 'REST API providing programmatic access to millions of digitized Smithsonian collection objects, metadata, images, and 3D models across 19 museums and research centers. All content is released under CC0 (public domain). Supports search, content retrieval, and term browsing. An API key from api.data.gov is required for all requests.
+
+    '
+  version: 1.0.0
+  contact:
+    name: Smithsonian Open Access Team
+    email: openaccess@si.edu
+  license:
+    name: CC0 1.0 Universal
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+  termsOfService: https://www.si.edu/termsofuse
+servers:
+- url: https://api.si.edu/openaccess
+  description: Smithsonian Open Access API
+security:
+- ApiKeyAuth: []
+tags:
+- name: content
+  description: Retrieve individual collection objects by ID or URL
+paths:
+  /api/v1.0/content/{id}:
+    get:
+      operationId: getContent
+      summary: Get content by ID
+      description: Fetches content based on id/url of an object.
+      tags:
+      - content
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: Row id or URL of the collection object (e.g. edanmdm:nmaahc_2012.36.4ab).
+        schema:
+          type: string
+        example: edanmdm-nmaahc_2012.36.4ab
+      - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Content found successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentResponse'
+              example:
+                status: 200
+                responseCode: 1
+                response:
+                  id: edanmdm-nmaahc_2012.36.4ab
+                  title: Drumsticks used by Art Blakey
+                  unitCode: NMAAHC
+                  linkedId: ''
+                  type: edanmdm
+                  url: edanmdm:nmaahc_2012.36.4ab
+                  hash: b4c4a61ab9b71eb8777e50b5745c4ab0c75d1999
+                  timestamp: 1578947538
+                  lastTimeUpdated: 1578947529
+                  version: 123-1559922770904-1559922814561-0
+                message: content found
+        '400':
+          description: Bad request — one of the params did not pass validation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Content not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 404
+        responseCode:
+          type: integer
+          description: API response code (0 = error).
+          example: 0
+        response:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error message describing the issue.
+              example: 'not found: the resource you were acting on could not be found'
+        timestamp:
+          type: string
+          description: Timestamp of the error.
+          example: Fri Jun 07 09:23:09 EDT 2019
+    CollectionObject:
+      type: object
+      description: A digitized Smithsonian collection object.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the object.
+          example: edanmdm-nmaahc_2012.36.4ab
+        title:
+          type: string
+          description: Title of the collection object.
+          example: Drumsticks used by Art Blakey
+        unitCode:
+          type: string
+          description: Code identifying the Smithsonian museum or research unit.
+          example: NMAAHC
+        linkedId:
+          type: string
+          description: Linked identifier if applicable.
+        type:
+          type: string
+          description: Object type (e.g. edanmdm, ead_collection).
+          example: edanmdm
+        url:
+          type: string
+          description: Canonical URL identifier for the object.
+          example: edanmdm:nmaahc_2012.36.4ab
+        content:
+          type: object
+          description: Type-specific content metadata. Structure varies by object type.
+          additionalProperties: true
+        hash:
+          type: string
+          description: Content hash of the record.
+        docSignature:
+          type: string
+          description: Document signature for integrity checking.
+        timestamp:
+          type: integer
+          format: int64
+          description: Unix timestamp when the record was created.
+        lastTimeUpdated:
+          type: integer
+          format: int64
+          description: Unix timestamp when the record was last updated.
+        version:
+          type: string
+          description: Version identifier for the record.
+    ContentResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 200
+        responseCode:
+          type: integer
+          description: API response code (1 = success, 0 = error).
+          example: 1
+        response:
+          $ref: '#/components/schemas/CollectionObject'
+        message:
+          type: string
+          description: Human-readable response message.
+          example: content found
+  parameters:
+    ApiKey:
+      name: api_key
+      in: query
+      required: true
+      description: API key received from https://api.data.gov/signup/
+      schema:
+        type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key
+      description: API key from https://api.data.gov/signup/
+externalDocs:
+  description: Open Access API Documentation
+  url: https://edan.si.edu/openaccess/apidocs/
