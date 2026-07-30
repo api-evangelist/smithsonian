@@ -5,7 +5,20 @@ description: Smithsonian Institution Open Access REST API providing search and r
   museums and research centers. All content is released under CC0 (public domain)
   and covers art and design, history and culture, and science and technology collections.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/smithsonian.png
 url: https://raw.githubusercontent.com/api-evangelist/smithsonian/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -20,31 +33,48 @@ tags:
   - Public Domain
   - CC0
 apis:
-  - aid: smithsonian:smithsonian-open-access-api
-    name: Smithsonian Open Access API
-    description: REST API providing programmatic access to millions of digitized Smithsonian
-      collection objects, metadata, images, and 3D models across 19 museums and research
-      centers. Supports search, content retrieval, and term browsing via a free API
-      key from api.data.gov.
-    humanURL: https://edan.si.edu/openaccess/apidocs/
-    baseURL: https://api.si.edu/openaccess/api/v1.0
-    tags:
-      - Search
-      - Collections
-      - Objects
-      - Museums
-      - Metadata
-      - Open Data
-    properties:
-      - type: Documentation
-        url: https://edan.si.edu/openaccess/apidocs/
-      - type: OpenAPI
-        url: https://edan.si.edu/openaccess/apidocs/
-      - type: Authentication
-        url: https://api.data.gov/signup/
-    contact:
-      - FN: Smithsonian Open Access Team
-        email: openaccess@si.edu
+- aid: smithsonian:smithsonian-content-api
+  name: Smithsonian Institution content API
+  description: Retrieve individual collection objects by ID or URL
+  humanURL: https://edan.si.edu/openaccess/apidocs/
+  baseURL: https://api.si.edu/openaccess/api/v1.0
+  tags:
+  - content
+  properties:
+  - type: OpenAPI
+    url: openapi/smithsonian-content-api-openapi.yml
+  - type: Documentation
+    url: https://edan.si.edu/openaccess/apidocs/
+  - type: Authentication
+    url: https://api.data.gov/signup/
+- aid: smithsonian:smithsonian-metrics-api
+  name: Smithsonian Institution metrics API
+  description: Statistics about CC0 objects and media
+  humanURL: https://edan.si.edu/openaccess/apidocs/
+  baseURL: https://api.si.edu/openaccess/api/v1.0
+  tags:
+  - metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/smithsonian-metrics-api-openapi.yml
+  - type: Documentation
+    url: https://edan.si.edu/openaccess/apidocs/
+  - type: Authentication
+    url: https://api.data.gov/signup/
+- aid: smithsonian:smithsonian-search-api
+  name: Smithsonian Institution search API
+  description: Search across Smithsonian collections
+  humanURL: https://edan.si.edu/openaccess/apidocs/
+  baseURL: https://api.si.edu/openaccess/api/v1.0
+  tags:
+  - search
+  properties:
+  - type: OpenAPI
+    url: openapi/smithsonian-search-api-openapi.yml
+  - type: Documentation
+    url: https://edan.si.edu/openaccess/apidocs/
+  - type: Authentication
+    url: https://api.data.gov/signup/
 common:
   - type: AgenticAccess
     url: agentic-access/smithsonian-agentic-access.yml
