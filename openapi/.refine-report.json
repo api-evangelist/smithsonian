@@ -1,0 +1,18 @@
+{
+  "provider": "smithsonian",
+  "sources": [
+    "smithsonian-content-api-openapi.yml",
+    "smithsonian-metrics-api-openapi.yml",
+    "smithsonian-search-api-openapi.yml"
+  ],
+  "outputs": [
+    "smithsonian-content-api-openapi.yml",
+    "smithsonian-metrics-api-openapi.yml",
+    "smithsonian-search-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

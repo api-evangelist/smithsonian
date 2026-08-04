@@ -1,0 +1,452 @@
+openapi: 3.0.3
+info:
+  title: Smithsonian Open Access API
+  description: >
+    REST API providing programmatic access to millions of digitized Smithsonian
+    collection objects, metadata, images, and 3D models across 19 museums and
+    research centers. All content is released under CC0 (public domain). Supports
+    search, content retrieval, and term browsing. An API key from api.data.gov
+    is required for all requests.
+  version: 1.0.0
+  contact:
+    name: Smithsonian Open Access Team
+    email: openaccess@si.edu
+  license:
+    name: CC0 1.0 Universal
+    url: https://creativecommons.org/publicdomain/zero/1.0/
+  termsOfService: https://www.si.edu/termsofuse
+externalDocs:
+  description: Open Access API Documentation
+  url: https://edan.si.edu/openaccess/apidocs/
+servers:
+  - url: https://api.si.edu/openaccess
+    description: Smithsonian Open Access API
+tags:
+  - name: content
+    description: Retrieve individual collection objects by ID or URL
+  - name: search
+    description: Search across Smithsonian collections
+  - name: metrics
+    description: Statistics about CC0 objects and media
+paths:
+  /api/v1.0/content/{id}:
+    get:
+      operationId: getContent
+      summary: Get content by ID
+      description: Fetches content based on id/url of an object.
+      tags:
+        - content
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: Row id or URL of the collection object (e.g. edanmdm:nmaahc_2012.36.4ab).
+          schema:
+            type: string
+          example: edanmdm-nmaahc_2012.36.4ab
+        - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Content found successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContentResponse'
+              example:
+                status: 200
+                responseCode: 1
+                response:
+                  id: edanmdm-nmaahc_2012.36.4ab
+                  title: Drumsticks used by Art Blakey
+                  unitCode: NMAAHC
+                  linkedId: ''
+                  type: edanmdm
+                  url: edanmdm:nmaahc_2012.36.4ab
+                  hash: b4c4a61ab9b71eb8777e50b5745c4ab0c75d1999
+                  timestamp: 1578947538
+                  lastTimeUpdated: 1578947529
+                  version: 123-1559922770904-1559922814561-0
+                message: content found
+        '400':
+          description: Bad request — one of the params did not pass validation.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Content not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1.0/search:
+    get:
+      operationId: search
+      summary: Search collection objects
+      description: Fetches content based on a query across all Smithsonian collections.
+      tags:
+        - search
+      parameters:
+        - $ref: '#/components/parameters/Query'
+        - $ref: '#/components/parameters/Start'
+        - $ref: '#/components/parameters/Rows'
+        - $ref: '#/components/parameters/Sort'
+        - name: type
+          in: query
+          required: false
+          description: The type of row object. Each type conforms to a published schema.
+          schema:
+            type: string
+            enum:
+              - edanmdm
+              - ead_collection
+              - ead_component
+              - all
+            default: edanmdm
+        - name: row_group
+          in: query
+          required: false
+          description: >
+            The designated set of row types to filter against. Objects refers to
+            objects, artifacts, and specimens. Archives are all archives collection
+            and item records.
+          schema:
+            type: string
+            enum:
+              - objects
+              - archives
+            default: objects
+        - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Search results returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1.0/category/{cat}/search:
+    get:
+      operationId: searchByCategory
+      summary: Search by category
+      description: >
+        Fetches content based on a query filtered to one of the three top-level
+        Smithsonian categories: art_design, history_culture, or science_technology.
+      tags:
+        - search
+      parameters:
+        - name: cat
+          in: path
+          required: true
+          description: The category to filter against.
+          schema:
+            type: string
+            enum:
+              - art_design
+              - history_culture
+              - science_technology
+        - $ref: '#/components/parameters/Query'
+        - $ref: '#/components/parameters/Start'
+        - $ref: '#/components/parameters/Rows'
+        - $ref: '#/components/parameters/Sort'
+        - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Category search results returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResponse'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Not found.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1.0/terms/{category}:
+    get:
+      operationId: getTerms
+      summary: Get terms by category
+      description: Fetches an array of terms based on a term category for use in faceted search.
+      tags:
+        - search
+      parameters:
+        - name: category
+          in: path
+          required: true
+          description: The term category to retrieve.
+          schema:
+            type: string
+            enum:
+              - culture
+              - data_source
+              - date
+              - object_type
+              - online_media_type
+              - place
+              - topic
+              - unit_code
+        - name: starts_with
+          in: query
+          required: false
+          description: Optional string prefix to filter terms.
+          schema:
+            type: string
+        - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Terms returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TermsResponse'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1.0/stats:
+    get:
+      operationId: getStats
+      summary: Get CC0 statistics
+      description: Fetches statistics for CC0 objects and media across all Smithsonian collections.
+      tags:
+        - metrics
+      parameters:
+        - $ref: '#/components/parameters/ApiKey'
+      responses:
+        '200':
+          description: Statistics returned successfully.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StatsResponse'
+        '400':
+          description: Bad request.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    ApiKey:
+      name: api_key
+      in: query
+      required: true
+      description: API key received from https://api.data.gov/signup/
+      schema:
+        type: string
+    Query:
+      name: q
+      in: query
+      required: true
+      description: >
+        The query string. Accepts boolean operators (AND, OR) and fielded searches
+        (e.g. topic:Gastropoda). See /terms endpoints for valid field types.
+      schema:
+        type: string
+    Start:
+      name: start
+      in: query
+      required: false
+      description: The starting row offset for pagination.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    Rows:
+      name: rows
+      in: query
+      required: false
+      description: Number of rows to return (0–1000).
+      schema:
+        type: integer
+        minimum: 0
+        maximum: 1000
+        default: 10
+    Sort:
+      name: sort
+      in: query
+      required: false
+      description: >
+        Sort order of the result set. Default is relevancy. newest sorts by
+        timestamp descending. updated sorts by lastTimeUpdated descending.
+      schema:
+        type: string
+        enum:
+          - id
+          - newest
+          - updated
+          - random
+        default: relevancy
+  schemas:
+    CollectionObject:
+      type: object
+      description: A digitized Smithsonian collection object.
+      properties:
+        id:
+          type: string
+          description: Unique identifier for the object.
+          example: edanmdm-nmaahc_2012.36.4ab
+        title:
+          type: string
+          description: Title of the collection object.
+          example: Drumsticks used by Art Blakey
+        unitCode:
+          type: string
+          description: Code identifying the Smithsonian museum or research unit.
+          example: NMAAHC
+        linkedId:
+          type: string
+          description: Linked identifier if applicable.
+        type:
+          type: string
+          description: Object type (e.g. edanmdm, ead_collection).
+          example: edanmdm
+        url:
+          type: string
+          description: Canonical URL identifier for the object.
+          example: edanmdm:nmaahc_2012.36.4ab
+        content:
+          type: object
+          description: Type-specific content metadata. Structure varies by object type.
+          additionalProperties: true
+        hash:
+          type: string
+          description: Content hash of the record.
+        docSignature:
+          type: string
+          description: Document signature for integrity checking.
+        timestamp:
+          type: integer
+          format: int64
+          description: Unix timestamp when the record was created.
+        lastTimeUpdated:
+          type: integer
+          format: int64
+          description: Unix timestamp when the record was last updated.
+        version:
+          type: string
+          description: Version identifier for the record.
+    ContentResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 200
+        responseCode:
+          type: integer
+          description: API response code (1 = success, 0 = error).
+          example: 1
+        response:
+          $ref: '#/components/schemas/CollectionObject'
+        message:
+          type: string
+          description: Human-readable response message.
+          example: content found
+    SearchResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 200
+        responseCode:
+          type: integer
+          description: API response code (1 = success, 0 = error).
+          example: 1
+        response:
+          type: object
+          properties:
+            rows:
+              type: array
+              description: Array of matching collection objects.
+              items:
+                $ref: '#/components/schemas/CollectionObject'
+            rowCount:
+              type: integer
+              description: Total number of matching records.
+              example: 4700000
+            message:
+              type: string
+              description: Human-readable response message.
+              example: content found
+    TermsResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 200
+        responseCode:
+          type: integer
+          example: 1
+        response:
+          type: object
+          properties:
+            terms:
+              type: array
+              description: Array of term strings for the requested category.
+              items:
+                type: string
+    StatsResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 200
+        responseCode:
+          type: integer
+          example: 1
+        response:
+          type: object
+          description: Statistics about CC0 objects and media in the Smithsonian collections.
+          additionalProperties: true
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 404
+        responseCode:
+          type: integer
+          description: API response code (0 = error).
+          example: 0
+        response:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error message describing the issue.
+              example: "not found: the resource you were acting on could not be found"
+        timestamp:
+          type: string
+          description: Timestamp of the error.
+          example: "Fri Jun 07 09:23:09 EDT 2019"
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: api_key
+      description: API key from https://api.data.gov/signup/
+security:
+  - ApiKeyAuth: []
