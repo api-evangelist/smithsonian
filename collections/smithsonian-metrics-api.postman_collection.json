@@ -1,0 +1,185 @@
+{
+  "item": [
+    {
+      "id": "38f2ddaa-ece5-4f04-ad35-1526e4a0bf4f",
+      "name": "metrics",
+      "description": {
+        "content": "Statistics about CC0 objects and media",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2326a8c8-eabf-47d4-ade7-967a8b59254b",
+          "name": "Get CC0 statistics",
+          "request": {
+            "name": "Get CC0 statistics",
+            "description": {
+              "content": "Fetches statistics for CC0 objects and media across all Smithsonian collections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1.0",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) API key received from https://api.data.gov/signup/"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "96cf6989-d00f-4f7d-94cb-604fbebd6ce0",
+              "name": "Statistics returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1.0",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 200,\n  \"responseCode\": 1,\n  \"response\": {\n    \"key_0\": 7551.690627335228,\n    \"key_1\": 3490.150433613285,\n    \"key_2\": \"string\",\n    \"key_3\": 2423.8344239751086,\n    \"key_4\": 8346\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c83674b8-db6f-484e-bd7b-179f82c44afb",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1.0",
+                    "stats"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"responseCode\": 0,\n  \"response\": {\n    \"error\": \"not found: the resource you were acting on could not be found\"\n  },\n  \"timestamp\": \"Fri Jun 07 09:23:09 EDT 2019\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.si.edu/openaccess",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b44df227-bcf5-4849-8464-4d722179df22",
+    "name": "Smithsonian Open Access content metrics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to millions of digitized Smithsonian collection objects, metadata, images, and 3D models across 19 museums and research centers. All content is released under CC0 (public domain). Supports search, content retrieval, and term browsing. An API key from api.data.gov is required for all requests.\n\n\nContact Support:\n Name: Smithsonian Open Access Team\n Email: openaccess@si.edu",
+      "type": "text/plain"
+    }
+  }
+}

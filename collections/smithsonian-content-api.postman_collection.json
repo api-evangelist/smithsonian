@@ -1,0 +1,267 @@
+{
+  "item": [
+    {
+      "id": "7a77f373-d399-42d9-be2c-7b68a5c8c95d",
+      "name": "content",
+      "description": {
+        "content": "Retrieve individual collection objects by ID or URL",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d77f14b0-69d3-4fd4-8e68-55cfaea3e101",
+          "name": "Get content by ID",
+          "request": {
+            "name": "Get content by ID",
+            "description": {
+              "content": "Fetches content based on id/url of an object.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1.0",
+                "content",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) API key received from https://api.data.gov/signup/"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) Row id or URL of the collection object (e.g. edanmdm:nmaahc_2012.36.4ab)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "003ee7b9-08ae-4880-a8aa-da1c42a8f1c1",
+              "name": "Content found successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1.0",
+                    "content",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Row id or URL of the collection object (e.g. edanmdm:nmaahc_2012.36.4ab)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 200,\n  \"responseCode\": 1,\n  \"response\": {\n    \"id\": \"edanmdm-nmaahc_2012.36.4ab\",\n    \"title\": \"Drumsticks used by Art Blakey\",\n    \"unitCode\": \"NMAAHC\",\n    \"linkedId\": \"\",\n    \"type\": \"edanmdm\",\n    \"url\": \"edanmdm:nmaahc_2012.36.4ab\",\n    \"hash\": \"b4c4a61ab9b71eb8777e50b5745c4ab0c75d1999\",\n    \"timestamp\": 1578947538,\n    \"lastTimeUpdated\": 1578947529,\n    \"version\": \"123-1559922770904-1559922814561-0\"\n  },\n  \"message\": \"content found\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "54b8618d-4a5d-4f94-bb55-ec980d0f380e",
+              "name": "Bad request — one of the params did not pass validation.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1.0",
+                    "content",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Row id or URL of the collection object (e.g. edanmdm:nmaahc_2012.36.4ab)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"responseCode\": 0,\n  \"response\": {\n    \"error\": \"not found: the resource you were acting on could not be found\"\n  },\n  \"timestamp\": \"Fri Jun 07 09:23:09 EDT 2019\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb55480c-b6c0-459d-9f54-ca88ad5568ab",
+              "name": "Content not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1.0",
+                    "content",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) Row id or URL of the collection object (e.g. edanmdm:nmaahc_2012.36.4ab)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"responseCode\": 0,\n  \"response\": {\n    \"error\": \"not found: the resource you were acting on could not be found\"\n  },\n  \"timestamp\": \"Fri Jun 07 09:23:09 EDT 2019\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.si.edu/openaccess",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a9df7d05-12b7-48eb-af15-ac646d1115b2",
+    "name": "Smithsonian Open Access content API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to millions of digitized Smithsonian collection objects, metadata, images, and 3D models across 19 museums and research centers. All content is released under CC0 (public domain). Supports search, content retrieval, and term browsing. An API key from api.data.gov is required for all requests.\n\n\nContact Support:\n Name: Smithsonian Open Access Team\n Email: openaccess@si.edu",
+      "type": "text/plain"
+    }
+  }
+}

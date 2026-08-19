@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smithsonian Open Access content API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "content",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get content by ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.si.edu/openaccess/api/v1.0/content/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "edanmdm-nmaahc_2012.36.4ab",
+                "type": "path",
+                "description": "Row id or URL of the collection object (e.g. edanmdm:nmaahc_2012.36.4ab)."
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "API key received from https://api.data.gov/signup/"
+              }
+            ]
+          },
+          "docs": "Fetches content based on id/url of an object."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

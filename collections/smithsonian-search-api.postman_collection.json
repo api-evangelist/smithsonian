@@ -1,0 +1,810 @@
+{
+  "item": [
+    {
+      "id": "67caa472-c32f-476a-89eb-91725d5034a4",
+      "name": "search",
+      "description": {
+        "content": "Search across Smithsonian collections",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6754ec9f-eb9f-48bf-bca1-dffe88d0c8e6",
+          "name": "Search collection objects",
+          "request": {
+            "name": "Search collection objects",
+            "description": {
+              "content": "Fetches content based on a query across all Smithsonian collections.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1.0",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) The query string. Accepts boolean operators (AND, OR) and fielded searches (e.g. topic:Gastropoda). See /terms endpoints for valid field types.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "The starting row offset for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "rows",
+                  "value": "10",
+                  "description": "Number of rows to return (0–1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "relevancy",
+                  "description": "Sort order of the result set. Default is relevancy. newest sorts by timestamp descending. updated sorts by lastTimeUpdated descending.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "edanmdm",
+                  "description": "The type of row object. Each type conforms to a published schema."
+                },
+                {
+                  "disabled": false,
+                  "key": "row_group",
+                  "value": "objects",
+                  "description": "The designated set of row types to filter against. Objects refers to objects, artifacts, and specimens. Archives are all archives collection and item records.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) API key received from https://api.data.gov/signup/"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e020669f-8966-441a-bcd1-c9561cb57b35",
+              "name": "Search results returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1.0",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevancy"
+                    },
+                    {
+                      "key": "type",
+                      "value": "edanmdm"
+                    },
+                    {
+                      "key": "row_group",
+                      "value": "objects"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 200,\n  \"responseCode\": 1,\n  \"response\": {\n    \"rows\": [\n      {\n        \"id\": \"edanmdm-nmaahc_2012.36.4ab\",\n        \"title\": \"Drumsticks used by Art Blakey\",\n        \"unitCode\": \"NMAAHC\",\n        \"linkedId\": \"string\",\n        \"type\": \"edanmdm\",\n        \"url\": \"edanmdm:nmaahc_2012.36.4ab\",\n        \"content\": {\n          \"key_0\": 4262.07562014194,\n          \"key_1\": 730\n        },\n        \"hash\": \"string\",\n        \"docSignature\": \"string\",\n        \"timestamp\": 5730,\n        \"lastTimeUpdated\": 836,\n        \"version\": \"string\"\n      },\n      {\n        \"id\": \"edanmdm-nmaahc_2012.36.4ab\",\n        \"title\": \"Drumsticks used by Art Blakey\",\n        \"unitCode\": \"NMAAHC\",\n        \"linkedId\": \"string\",\n        \"type\": \"edanmdm\",\n        \"url\": \"edanmdm:nmaahc_2012.36.4ab\",\n        \"content\": {\n          \"key_0\": 9197,\n          \"key_1\": 3077\n        },\n        \"hash\": \"string\",\n        \"docSignature\": \"string\",\n        \"timestamp\": 9534,\n        \"lastTimeUpdated\": 230,\n        \"version\": \"string\"\n      }\n    ],\n    \"rowCount\": 4700000,\n    \"message\": \"content found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "faa1bc18-bbc9-4ae2-a35d-3192d74bdf00",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1.0",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevancy"
+                    },
+                    {
+                      "key": "type",
+                      "value": "edanmdm"
+                    },
+                    {
+                      "key": "row_group",
+                      "value": "objects"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"responseCode\": 0,\n  \"response\": {\n    \"error\": \"not found: the resource you were acting on could not be found\"\n  },\n  \"timestamp\": \"Fri Jun 07 09:23:09 EDT 2019\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "356d315f-464b-4186-9ff9-b49a0571881c",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1.0",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevancy"
+                    },
+                    {
+                      "key": "type",
+                      "value": "edanmdm"
+                    },
+                    {
+                      "key": "row_group",
+                      "value": "objects"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"responseCode\": 0,\n  \"response\": {\n    \"error\": \"not found: the resource you were acting on could not be found\"\n  },\n  \"timestamp\": \"Fri Jun 07 09:23:09 EDT 2019\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5ed9d2ca-245b-4e00-8b4e-0ebc5fe6eadf",
+          "name": "Search by category",
+          "request": {
+            "name": "Search by category",
+            "description": {
+              "content": "Fetches content based on a query filtered to one of the three top-level Smithsonian categories: art_design, history_culture, or science_technology.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1.0",
+                "category",
+                ":cat",
+                "search"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) The query string. Accepts boolean operators (AND, OR) and fielded searches (e.g. topic:Gastropoda). See /terms endpoints for valid field types.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "The starting row offset for pagination."
+                },
+                {
+                  "disabled": false,
+                  "key": "rows",
+                  "value": "10",
+                  "description": "Number of rows to return (0–1000)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "relevancy",
+                  "description": "Sort order of the result set. Default is relevancy. newest sorts by timestamp descending. updated sorts by lastTimeUpdated descending.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) API key received from https://api.data.gov/signup/"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "cat",
+                  "description": "(Required) The category to filter against."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab616981-6601-43a2-9154-a4714dfbcdaa",
+              "name": "Category search results returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1.0",
+                    "category",
+                    ":cat",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevancy"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cat",
+                      "description": "(Required) The category to filter against."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 200,\n  \"responseCode\": 1,\n  \"response\": {\n    \"rows\": [\n      {\n        \"id\": \"edanmdm-nmaahc_2012.36.4ab\",\n        \"title\": \"Drumsticks used by Art Blakey\",\n        \"unitCode\": \"NMAAHC\",\n        \"linkedId\": \"string\",\n        \"type\": \"edanmdm\",\n        \"url\": \"edanmdm:nmaahc_2012.36.4ab\",\n        \"content\": {\n          \"key_0\": 7975.002731156125,\n          \"key_1\": \"string\"\n        },\n        \"hash\": \"string\",\n        \"docSignature\": \"string\",\n        \"timestamp\": 6734,\n        \"lastTimeUpdated\": 7499,\n        \"version\": \"string\"\n      },\n      {\n        \"id\": \"edanmdm-nmaahc_2012.36.4ab\",\n        \"title\": \"Drumsticks used by Art Blakey\",\n        \"unitCode\": \"NMAAHC\",\n        \"linkedId\": \"string\",\n        \"type\": \"edanmdm\",\n        \"url\": \"edanmdm:nmaahc_2012.36.4ab\",\n        \"content\": {\n          \"key_0\": \"string\",\n          \"key_1\": false,\n          \"key_2\": true\n        },\n        \"hash\": \"string\",\n        \"docSignature\": \"string\",\n        \"timestamp\": 1664,\n        \"lastTimeUpdated\": 965,\n        \"version\": \"string\"\n      }\n    ],\n    \"rowCount\": 4700000,\n    \"message\": \"content found\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96df7052-8241-413a-a49d-99c9f7f1637f",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1.0",
+                    "category",
+                    ":cat",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevancy"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cat",
+                      "description": "(Required) The category to filter against."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"responseCode\": 0,\n  \"response\": {\n    \"error\": \"not found: the resource you were acting on could not be found\"\n  },\n  \"timestamp\": \"Fri Jun 07 09:23:09 EDT 2019\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e261f3b1-9a76-4182-a4ba-b739ca6bdd8d",
+              "name": "Not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1.0",
+                    "category",
+                    ":cat",
+                    "search"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "rows",
+                      "value": "10"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "relevancy"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "cat",
+                      "description": "(Required) The category to filter against."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"responseCode\": 0,\n  \"response\": {\n    \"error\": \"not found: the resource you were acting on could not be found\"\n  },\n  \"timestamp\": \"Fri Jun 07 09:23:09 EDT 2019\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "85d0eec3-90da-4b71-84d7-0ee13d68e938",
+          "name": "Get terms by category",
+          "request": {
+            "name": "Get terms by category",
+            "description": {
+              "content": "Fetches an array of terms based on a term category for use in faceted search.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "v1.0",
+                "terms",
+                ":category"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "starts_with",
+                  "value": "<string>",
+                  "description": "Optional string prefix to filter terms."
+                },
+                {
+                  "disabled": false,
+                  "key": "api_key",
+                  "value": "<string>",
+                  "description": "(Required) API key received from https://api.data.gov/signup/"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "category",
+                  "description": "(Required) The term category to retrieve."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8bd7d6e8-6dea-404c-85ee-2cc2e4344a4c",
+              "name": "Terms returned successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1.0",
+                    "terms",
+                    ":category"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "starts_with",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "category",
+                      "description": "(Required) The term category to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 200,\n  \"responseCode\": 1,\n  \"response\": {\n    \"terms\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "19354828-2d1b-4d52-98a3-7fa1f6c73081",
+              "name": "Bad request.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "v1.0",
+                    "terms",
+                    ":category"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "starts_with",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "api_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "category",
+                      "description": "(Required) The term category to retrieve."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": 404,\n  \"responseCode\": 0,\n  \"response\": {\n    \"error\": \"not found: the resource you were acting on could not be found\"\n  },\n  \"timestamp\": \"Fri Jun 07 09:23:09 EDT 2019\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.si.edu/openaccess",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "api_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2062c8be-b259-47bf-b211-a0b00fd34b04",
+    "name": "Smithsonian Open Access content search API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "REST API providing programmatic access to millions of digitized Smithsonian collection objects, metadata, images, and 3D models across 19 museums and research centers. All content is released under CC0 (public domain). Supports search, content retrieval, and term browsing. An API key from api.data.gov is required for all requests.\n\n\nContact Support:\n Name: Smithsonian Open Access Team\n Email: openaccess@si.edu",
+      "type": "text/plain"
+    }
+  }
+}

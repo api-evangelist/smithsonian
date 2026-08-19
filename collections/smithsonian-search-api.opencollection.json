@@ -1,0 +1,161 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Smithsonian Open Access content search API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "api_key",
+      "value": "{{api_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "search",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search collection objects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.si.edu/openaccess/api/v1.0/search",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The query string. Accepts boolean operators (AND, OR) and fielded searches (e.g. topic:Gastropoda). See /terms endpoints for valid field types.\n"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "The starting row offset for pagination."
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to return (0–1000)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order of the result set. Default is relevancy. newest sorts by timestamp descending. updated sorts by lastTimeUpdated descending.\n"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "The type of row object. Each type conforms to a published schema."
+              },
+              {
+                "name": "row_group",
+                "value": "",
+                "type": "query",
+                "description": "The designated set of row types to filter against. Objects refers to objects, artifacts, and specimens. Archives are all archives collection and item records.\n"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "API key received from https://api.data.gov/signup/"
+              }
+            ]
+          },
+          "docs": "Fetches content based on a query across all Smithsonian collections."
+        },
+        {
+          "info": {
+            "name": "Search by category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.si.edu/openaccess/api/v1.0/category/:cat/search",
+            "params": [
+              {
+                "name": "cat",
+                "value": "",
+                "type": "path",
+                "description": "The category to filter against."
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "The query string. Accepts boolean operators (AND, OR) and fielded searches (e.g. topic:Gastropoda). See /terms endpoints for valid field types.\n"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "The starting row offset for pagination."
+              },
+              {
+                "name": "rows",
+                "value": "",
+                "type": "query",
+                "description": "Number of rows to return (0–1000)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort order of the result set. Default is relevancy. newest sorts by timestamp descending. updated sorts by lastTimeUpdated descending.\n"
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "API key received from https://api.data.gov/signup/"
+              }
+            ]
+          },
+          "docs": "Fetches content based on a query filtered to one of the three top-level Smithsonian categories: art_design, history_culture, or science_technology.\n"
+        },
+        {
+          "info": {
+            "name": "Get terms by category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.si.edu/openaccess/api/v1.0/terms/:category",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "path",
+                "description": "The term category to retrieve."
+              },
+              {
+                "name": "starts_with",
+                "value": "",
+                "type": "query",
+                "description": "Optional string prefix to filter terms."
+              },
+              {
+                "name": "api_key",
+                "value": "",
+                "type": "query",
+                "description": "API key received from https://api.data.gov/signup/"
+              }
+            ]
+          },
+          "docs": "Fetches an array of terms based on a term category for use in faceted search."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
