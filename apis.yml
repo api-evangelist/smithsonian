@@ -27,6 +27,15 @@ tags:
   - Museums
   - Open Access
   - Cultural Heritage
+  - Collection
+  - Image
+  - 3D Models
+  - Public Domain
+  - CC0
+tags_raw:
+  - Museums
+  - Open Access
+  - Cultural Heritage
   - Collections
   - Images
   - 3D Models
@@ -39,6 +48,8 @@ apis:
   humanURL: https://edan.si.edu/openaccess/apidocs/
   baseURL: https://api.si.edu/openaccess/api/v1.0
   tags:
+  - Content
+  tags_raw:
   - content
   properties:
   - type: OpenAPI
@@ -53,6 +64,8 @@ apis:
   humanURL: https://edan.si.edu/openaccess/apidocs/
   baseURL: https://api.si.edu/openaccess/api/v1.0
   tags:
+  - Metrics
+  tags_raw:
   - metrics
   properties:
   - type: OpenAPI
@@ -67,6 +80,8 @@ apis:
   humanURL: https://edan.si.edu/openaccess/apidocs/
   baseURL: https://api.si.edu/openaccess/api/v1.0
   tags:
+  - Search
+  tags_raw:
   - search
   properties:
   - type: OpenAPI
