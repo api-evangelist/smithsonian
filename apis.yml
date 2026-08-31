@@ -60,7 +60,7 @@ apis:
   humanURL: https://edan.si.edu/openaccess/apidocs/
   baseURL: https://api.si.edu/openaccess/api/v1.0
   tags:
-  - Content
+  - content
   tags_raw:
   - content
   properties:
