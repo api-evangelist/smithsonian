@@ -1,9 +1,8 @@
 aid: smithsonian
 name: Smithsonian Institution
-description: Smithsonian Institution Open Access REST API providing search and retrieval
-  of over 4.7 million digitized objects, images, 3D models, and metadata across 19
-  museums and research centers. All content is released under CC0 (public domain)
-  and covers art and design, history and culture, and science and technology collections.
+description: Smithsonian Institution Open Access REST API providing search and retrieval of over 4.7 million digitized
+  objects, images, 3D models, and metadata across 19 museums and research centers. All content is released under
+  CC0 (public domain) and covers art and design, history and culture, and science and technology collections.
 type: Index
 deliveryModel:
   model: saas
@@ -19,16 +18,17 @@ deliveryModel:
   method: derived
 accessModel:
   pricing: paid
-  onboarding: self-serve
+  onboarding: unknown
   trial: false
   try_now: false
   public: false
-  label: Paid · Self-serve signup
-  confidence: high
+  label: Paid
+  confidence: medium
   source:
   - plans
   - authentication
-  generated: '2026-07-22'
+  - security
+  generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/smithsonian.png
 url: https://raw.githubusercontent.com/api-evangelist/smithsonian/refs/heads/main/apis.yml
@@ -36,23 +36,23 @@ created: '2026-06-13'
 modified: '2026-06-13'
 specificationVersion: '0.23'
 tags:
-  - Museums
-  - Open Access
-  - Cultural Heritage
-  - Collection
-  - Image
-  - 3D Models
-  - Public Domain
-  - CC0
+- Museums
+- Open Access
+- Cultural Heritage
+- Collection
+- Image
+- 3D Models
+- Public Domain
+- CC0
 tags_raw:
-  - Museums
-  - Open Access
-  - Cultural Heritage
-  - Collections
-  - Images
-  - 3D Models
-  - Public Domain
-  - CC0
+- Museums
+- Open Access
+- Cultural Heritage
+- Collections
+- Images
+- 3D Models
+- Public Domain
+- CC0
 apis:
 - aid: smithsonian:smithsonian-content-api
   name: Smithsonian Institution content API
@@ -102,35 +102,89 @@ apis:
     url: https://edan.si.edu/openaccess/apidocs/
   - type: Authentication
     url: https://api.data.gov/signup/
-common:
-  - type: AgenticAccess
-    url: agentic-access/smithsonian-agentic-access.yml
-  - type: DomainSecurity
-    url: security/smithsonian-domain-security.yml
-  - type: Authentication
-    url: authentication/smithsonian-authentication.yml
-  - type: Website
-    url: https://www.si.edu
+- aid: smithsonian:smithsonian-institution-content-api
+  name: Smithsonian Institution Content API
+  description: The Content API from Smithsonian Institution — 1 operation(s) for content.
+  humanURL: https://www.si.edu/openaccess/devtools
+  baseURL: https://edan.si.edu/openaccess
+  tags:
+  - Content
+  properties:
+  - type: OpenAPI
+    url: openapi/smithsonian-institution-content-api-openapi.yml
   - type: Documentation
-    url: https://edan.si.edu/openaccess/apidocs/
-  - type: GitHubOrg
-    url: https://github.com/Smithsonian
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/smithsonian-institution
-  - type: Blog
-    url: https://www.si.edu/openaccess
-  - type: Pricing
-    url: https://api.data.gov/signup/
-  - type: StatusPage
-    url: https://api.data.gov/
-  - type: X
-    url: https://twitter.com/smithsonian
-  - type: Plans
-    url: plans/smithsonian-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/smithsonian-rate-limits.yml
-  - type: FinOps
-    url: finops/smithsonian-finops.yml
+    url: https://www.si.edu/openaccess/devtools
+  - type: Documentation
+    url: https://edan.si.edu/openaccess/docs/
+  - type: GitHubRepository
+    url: https://github.com/Smithsonian/smithsonian-openaccess
+  - type: Signup
+    url: https://api.data.gov/signup
+- aid: smithsonian:smithsonian-institution-metrics-api
+  name: Smithsonian Institution Metrics API
+  description: The Metrics API from Smithsonian Institution — 1 operation(s) for metrics.
+  humanURL: https://www.si.edu/openaccess/devtools
+  baseURL: https://edan.si.edu/openaccess
+  tags:
+  - Metrics
+  properties:
+  - type: OpenAPI
+    url: openapi/smithsonian-institution-metrics-api-openapi.yml
+  - type: Documentation
+    url: https://www.si.edu/openaccess/devtools
+  - type: Documentation
+    url: https://edan.si.edu/openaccess/docs/
+  - type: GitHubRepository
+    url: https://github.com/Smithsonian/smithsonian-openaccess
+  - type: Signup
+    url: https://api.data.gov/signup
+- aid: smithsonian:smithsonian-institution-search-api
+  name: Smithsonian Institution Search API
+  description: The Search API from Smithsonian Institution — 3 operation(s) for search.
+  humanURL: https://www.si.edu/openaccess/devtools
+  baseURL: https://edan.si.edu/openaccess
+  tags:
+  - Search
+  properties:
+  - type: OpenAPI
+    url: openapi/smithsonian-institution-search-api-openapi.yml
+  - type: Documentation
+    url: https://www.si.edu/openaccess/devtools
+  - type: Documentation
+    url: https://edan.si.edu/openaccess/docs/
+  - type: GitHubRepository
+    url: https://github.com/Smithsonian/smithsonian-openaccess
+  - type: Signup
+    url: https://api.data.gov/signup
+common:
+- type: AgenticAccess
+  url: agentic-access/smithsonian-agentic-access.yml
+- type: DomainSecurity
+  url: security/smithsonian-domain-security.yml
+- type: Authentication
+  url: authentication/smithsonian-authentication.yml
+- type: Website
+  url: https://www.si.edu
+- type: Documentation
+  url: https://edan.si.edu/openaccess/apidocs/
+- type: GitHubOrg
+  url: https://github.com/Smithsonian
+- type: LinkedIn
+  url: https://www.linkedin.com/company/smithsonian-institution
+- type: Blog
+  url: https://www.si.edu/openaccess
+- type: Pricing
+  url: https://api.data.gov/signup/
+- type: StatusPage
+  url: https://api.data.gov/
+- type: X
+  url: https://twitter.com/smithsonian
+- type: Plans
+  url: plans/smithsonian-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/smithsonian-rate-limits.yml
+- type: FinOps
+  url: finops/smithsonian-finops.yml
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
