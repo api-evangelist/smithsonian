@@ -1,9 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Smithsonian Open Access content API
-  description: 'REST API providing programmatic access to millions of digitized Smithsonian collection objects, metadata, images, and 3D models across 19 museums and research centers. All content is released under CC0 (public domain). Supports search, content retrieval, and term browsing. An API key from api.data.gov is required for all requests.
-
-    '
+  title: Smithsonian Open Access Content API
+  description: REST API providing programmatic access to millions of digitized Smithsonian collection objects, metadata, images, and 3D models across 19 museums and research centers. All content is released under CC0 (public domain). Supports search, content retrieval, and term browsing. An API key from api.data.gov is required for all requests.
   version: 1.0.0
   contact:
     name: Smithsonian Open Access Team
@@ -18,7 +16,7 @@ servers:
 security:
 - ApiKeyAuth: []
 tags:
-- name: content
+- name: Content
   description: Retrieve individual collection objects by ID or URL
 paths:
   /api/v1.0/content/{id}:
@@ -27,7 +25,7 @@ paths:
       summary: Get content by ID
       description: Fetches content based on id/url of an object.
       tags:
-      - content
+      - Content
       parameters:
       - name: id
         in: path
@@ -72,29 +70,32 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    ApiKey:
+      name: api_key
+      in: query
+      required: true
+      description: API key received from https://api.data.gov/signup/
+      schema:
+        type: string
   schemas:
-    ErrorResponse:
+    ContentResponse:
       type: object
       properties:
         status:
           type: integer
           description: HTTP status code.
-          example: 404
+          example: 200
         responseCode:
           type: integer
-          description: API response code (0 = error).
-          example: 0
+          description: API response code (1 = success, 0 = error).
+          example: 1
         response:
-          type: object
-          properties:
-            error:
-              type: string
-              description: Error message describing the issue.
-              example: 'not found: the resource you were acting on could not be found'
-        timestamp:
+          $ref: '#/components/schemas/CollectionObject'
+        message:
           type: string
-          description: Timestamp of the error.
-          example: Fri Jun 07 09:23:09 EDT 2019
+          description: Human-readable response message.
+          example: content found
     CollectionObject:
       type: object
       description: A digitized Smithsonian collection object.
@@ -143,31 +144,28 @@ components:
         version:
           type: string
           description: Version identifier for the record.
-    ContentResponse:
+    ErrorResponse:
       type: object
       properties:
         status:
           type: integer
           description: HTTP status code.
-          example: 200
+          example: 404
         responseCode:
           type: integer
-          description: API response code (1 = success, 0 = error).
-          example: 1
+          description: API response code (0 = error).
+          example: 0
         response:
-          $ref: '#/components/schemas/CollectionObject'
-        message:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error message describing the issue.
+              example: 'not found: the resource you were acting on could not be found'
+        timestamp:
           type: string
-          description: Human-readable response message.
-          example: content found
-  parameters:
-    ApiKey:
-      name: api_key
-      in: query
-      required: true
-      description: API key received from https://api.data.gov/signup/
-      schema:
-        type: string
+          description: Timestamp of the error.
+          example: Fri Jun 07 09:23:09 EDT 2019
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
