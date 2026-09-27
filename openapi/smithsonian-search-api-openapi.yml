@@ -162,6 +162,72 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 404
+        responseCode:
+          type: integer
+          description: API response code (0 = error).
+          example: 0
+        response:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error message describing the issue.
+              example: 'not found: the resource you were acting on could not be found'
+        timestamp:
+          type: string
+          description: Timestamp of the error.
+          example: Fri Jun 07 09:23:09 EDT 2019
+    TermsResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 200
+        responseCode:
+          type: integer
+          example: 1
+        response:
+          type: object
+          properties:
+            terms:
+              type: array
+              description: Array of term strings for the requested category.
+              items:
+                type: string
+    SearchResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 200
+        responseCode:
+          type: integer
+          description: API response code (1 = success, 0 = error).
+          example: 1
+        response:
+          type: object
+          properties:
+            rows:
+              type: array
+              description: Array of matching collection objects.
+              items:
+                $ref: '#/components/schemas/CollectionObject'
+            rowCount:
+              type: integer
+              description: Total number of matching records.
+              example: 4700000
+            message:
+              type: string
+              description: Human-readable response message.
+              example: content found
     CollectionObject:
       type: object
       description: A digitized Smithsonian collection object.
@@ -210,72 +276,6 @@ components:
         version:
           type: string
           description: Version identifier for the record.
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code.
-          example: 404
-        responseCode:
-          type: integer
-          description: API response code (0 = error).
-          example: 0
-        response:
-          type: object
-          properties:
-            error:
-              type: string
-              description: Error message describing the issue.
-              example: 'not found: the resource you were acting on could not be found'
-        timestamp:
-          type: string
-          description: Timestamp of the error.
-          example: Fri Jun 07 09:23:09 EDT 2019
-    SearchResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code.
-          example: 200
-        responseCode:
-          type: integer
-          description: API response code (1 = success, 0 = error).
-          example: 1
-        response:
-          type: object
-          properties:
-            rows:
-              type: array
-              description: Array of matching collection objects.
-              items:
-                $ref: '#/components/schemas/CollectionObject'
-            rowCount:
-              type: integer
-              description: Total number of matching records.
-              example: 4700000
-            message:
-              type: string
-              description: Human-readable response message.
-              example: content found
-    TermsResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          example: 200
-        responseCode:
-          type: integer
-          example: 1
-        response:
-          type: object
-          properties:
-            terms:
-              type: array
-              description: Array of term strings for the requested category.
-              items:
-                type: string
   parameters:
     Sort:
       name: sort
@@ -301,6 +301,16 @@ components:
         '
       schema:
         type: string
+    Rows:
+      name: rows
+      in: query
+      required: false
+      description: Number of rows to return (0–1000).
+      schema:
+        type: integer
+        minimum: 0
+        maximum: 1000
+        default: 10
     Start:
       name: start
       in: query
@@ -317,16 +327,6 @@ components:
       description: API key received from https://api.data.gov/signup/
       schema:
         type: string
-    Rows:
-      name: rows
-      in: query
-      required: false
-      description: Number of rows to return (0–1000).
-      schema:
-        type: integer
-        minimum: 0
-        maximum: 1000
-        default: 10
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

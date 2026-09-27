@@ -55,7 +55,7 @@ tags_raw:
 - CC0
 apis:
 - aid: smithsonian:smithsonian-content-api
-  name: Smithsonian Institution content API
+  name: Smithsonian Institution Content API
   description: Retrieve individual collection objects by ID or URL
   humanURL: https://edan.si.edu/openaccess/apidocs/
   baseURL: https://api.si.edu/openaccess/api/v1.0
@@ -71,7 +71,7 @@ apis:
   - type: Authentication
     url: https://api.data.gov/signup/
 - aid: smithsonian:smithsonian-metrics-api
-  name: Smithsonian Institution metrics API
+  name: Smithsonian Institution Metrics API
   description: Statistics about CC0 objects and media
   humanURL: https://edan.si.edu/openaccess/apidocs/
   baseURL: https://api.si.edu/openaccess/api/v1.0
@@ -87,7 +87,7 @@ apis:
   - type: Authentication
     url: https://api.data.gov/signup/
 - aid: smithsonian:smithsonian-search-api
-  name: Smithsonian Institution search API
+  name: Smithsonian Institution Search API
   description: Search across Smithsonian collections
   humanURL: https://edan.si.edu/openaccess/apidocs/
   baseURL: https://api.si.edu/openaccess/api/v1.0
