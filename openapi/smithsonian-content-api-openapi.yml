@@ -71,45 +71,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code.
-          example: 404
-        responseCode:
-          type: integer
-          description: API response code (0 = error).
-          example: 0
-        response:
-          type: object
-          properties:
-            error:
-              type: string
-              description: Error message describing the issue.
-              example: 'not found: the resource you were acting on could not be found'
-        timestamp:
-          type: string
-          description: Timestamp of the error.
-          example: Fri Jun 07 09:23:09 EDT 2019
-    ContentResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code.
-          example: 200
-        responseCode:
-          type: integer
-          description: API response code (1 = success, 0 = error).
-          example: 1
-        response:
-          $ref: '#/components/schemas/CollectionObject'
-        message:
-          type: string
-          description: Human-readable response message.
-          example: content found
     CollectionObject:
       type: object
       description: A digitized Smithsonian collection object.
@@ -158,6 +119,45 @@ components:
         version:
           type: string
           description: Version identifier for the record.
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 404
+        responseCode:
+          type: integer
+          description: API response code (0 = error).
+          example: 0
+        response:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error message describing the issue.
+              example: 'not found: the resource you were acting on could not be found'
+        timestamp:
+          type: string
+          description: Timestamp of the error.
+          example: Fri Jun 07 09:23:09 EDT 2019
+    ContentResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 200
+        responseCode:
+          type: integer
+          description: API response code (1 = success, 0 = error).
+          example: 1
+        response:
+          $ref: '#/components/schemas/CollectionObject'
+        message:
+          type: string
+          description: Human-readable response message.
+          example: content found
   parameters:
     ApiKey:
       name: api_key

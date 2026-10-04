@@ -162,23 +162,6 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
-    TermsResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          example: 200
-        responseCode:
-          type: integer
-          example: 1
-        response:
-          type: object
-          properties:
-            terms:
-              type: array
-              description: Array of term strings for the requested category.
-              items:
-                type: string
     CollectionObject:
       type: object
       description: A digitized Smithsonian collection object.
@@ -227,28 +210,6 @@ components:
         version:
           type: string
           description: Version identifier for the record.
-    ErrorResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          description: HTTP status code.
-          example: 404
-        responseCode:
-          type: integer
-          description: API response code (0 = error).
-          example: 0
-        response:
-          type: object
-          properties:
-            error:
-              type: string
-              description: Error message describing the issue.
-              example: 'not found: the resource you were acting on could not be found'
-        timestamp:
-          type: string
-          description: Timestamp of the error.
-          example: Fri Jun 07 09:23:09 EDT 2019
     SearchResponse:
       type: object
       properties:
@@ -276,7 +237,68 @@ components:
               type: string
               description: Human-readable response message.
               example: content found
+    TermsResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 200
+        responseCode:
+          type: integer
+          example: 1
+        response:
+          type: object
+          properties:
+            terms:
+              type: array
+              description: Array of term strings for the requested category.
+              items:
+                type: string
+    ErrorResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: HTTP status code.
+          example: 404
+        responseCode:
+          type: integer
+          description: API response code (0 = error).
+          example: 0
+        response:
+          type: object
+          properties:
+            error:
+              type: string
+              description: Error message describing the issue.
+              example: 'not found: the resource you were acting on could not be found'
+        timestamp:
+          type: string
+          description: Timestamp of the error.
+          example: Fri Jun 07 09:23:09 EDT 2019
   parameters:
+    ApiKey:
+      name: api_key
+      in: query
+      required: true
+      description: API key received from https://api.data.gov/signup/
+      schema:
+        type: string
+    Sort:
+      name: sort
+      in: query
+      required: false
+      description: 'Sort order of the result set. Default is relevancy. newest sorts by timestamp descending. updated sorts by lastTimeUpdated descending.
+
+        '
+      schema:
+        type: string
+        enum:
+        - id
+        - newest
+        - updated
+        - random
+        default: relevancy
     Query:
       name: q
       in: query
@@ -296,28 +318,6 @@ components:
         minimum: 0
         maximum: 1000
         default: 10
-    Sort:
-      name: sort
-      in: query
-      required: false
-      description: 'Sort order of the result set. Default is relevancy. newest sorts by timestamp descending. updated sorts by lastTimeUpdated descending.
-
-        '
-      schema:
-        type: string
-        enum:
-        - id
-        - newest
-        - updated
-        - random
-        default: relevancy
-    ApiKey:
-      name: api_key
-      in: query
-      required: true
-      description: API key received from https://api.data.gov/signup/
-      schema:
-        type: string
     Start:
       name: start
       in: query

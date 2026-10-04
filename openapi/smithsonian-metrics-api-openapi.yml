@@ -43,6 +43,19 @@ paths:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
+    StatsResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 200
+        responseCode:
+          type: integer
+          example: 1
+        response:
+          type: object
+          description: Statistics about CC0 objects and media in the Smithsonian collections.
+          additionalProperties: true
     ErrorResponse:
       type: object
       properties:
@@ -65,19 +78,6 @@ components:
           type: string
           description: Timestamp of the error.
           example: Fri Jun 07 09:23:09 EDT 2019
-    StatsResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          example: 200
-        responseCode:
-          type: integer
-          example: 1
-        response:
-          type: object
-          description: Statistics about CC0 objects and media in the Smithsonian collections.
-          additionalProperties: true
   parameters:
     ApiKey:
       name: api_key
