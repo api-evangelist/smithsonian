@@ -1,3 +1,8 @@
+# Provenance stamped 2026-10-07 (roadmap#943): written by an API Evangelist sweep (dated 2026-06-13 by the file itself), not
+# harvested from the provider. `method: generated` so the economics campaign may replace it with a
+# dated, verbatim transcription; every figure below is unverified until it does.
+method: generated
+generated: '2026-06-13'
 name: Smithsonian Open Access API Plans and Pricing
 description: The Smithsonian Open Access API is free to use for all purposes. API
   keys are obtained through api.data.gov, the US Government's shared API management
@@ -77,3 +82,29 @@ notes:
   - API keys are managed through api.data.gov, the US Government API infrastructure
   - Rate limit headers (X-RateLimit-Limit, X-RateLimit-Remaining) are returned with every response
   - HTTP 429 responses indicate rate limit exceeded; limits reset on a rolling hourly basis
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - negotiated
+  units: []
+  plans:
+  - name: DEMO_KEY (No Registration)
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: Standard API Key
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods: []
+  - name: High-Volume Access
+    access: other
+    model: negotiated
+    model_how: derived
+    units: []
+    periods: []
