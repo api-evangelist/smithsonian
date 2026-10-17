@@ -161,6 +161,57 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
 components:
+  parameters:
+    ApiKey:
+      name: api_key
+      in: query
+      required: true
+      description: API key received from https://api.data.gov/signup/
+      schema:
+        type: string
+    Query:
+      name: q
+      in: query
+      required: true
+      description: 'The query string. Accepts boolean operators (AND, OR) and fielded searches (e.g. topic:Gastropoda). See /terms endpoints for valid field types.
+
+        '
+      schema:
+        type: string
+    Start:
+      name: start
+      in: query
+      required: false
+      description: The starting row offset for pagination.
+      schema:
+        type: integer
+        minimum: 0
+        default: 0
+    Rows:
+      name: rows
+      in: query
+      required: false
+      description: Number of rows to return (0–1000).
+      schema:
+        type: integer
+        minimum: 0
+        maximum: 1000
+        default: 10
+    Sort:
+      name: sort
+      in: query
+      required: false
+      description: 'Sort order of the result set. Default is relevancy. newest sorts by timestamp descending. updated sorts by lastTimeUpdated descending.
+
+        '
+      schema:
+        type: string
+        enum:
+        - id
+        - newest
+        - updated
+        - random
+        default: relevancy
   schemas:
     CollectionObject:
       type: object
@@ -237,23 +288,6 @@ components:
               type: string
               description: Human-readable response message.
               example: content found
-    TermsResponse:
-      type: object
-      properties:
-        status:
-          type: integer
-          example: 200
-        responseCode:
-          type: integer
-          example: 1
-        response:
-          type: object
-          properties:
-            terms:
-              type: array
-              description: Array of term strings for the requested category.
-              items:
-                type: string
     ErrorResponse:
       type: object
       properties:
@@ -276,57 +310,23 @@ components:
           type: string
           description: Timestamp of the error.
           example: Fri Jun 07 09:23:09 EDT 2019
-  parameters:
-    ApiKey:
-      name: api_key
-      in: query
-      required: true
-      description: API key received from https://api.data.gov/signup/
-      schema:
-        type: string
-    Sort:
-      name: sort
-      in: query
-      required: false
-      description: 'Sort order of the result set. Default is relevancy. newest sorts by timestamp descending. updated sorts by lastTimeUpdated descending.
-
-        '
-      schema:
-        type: string
-        enum:
-        - id
-        - newest
-        - updated
-        - random
-        default: relevancy
-    Query:
-      name: q
-      in: query
-      required: true
-      description: 'The query string. Accepts boolean operators (AND, OR) and fielded searches (e.g. topic:Gastropoda). See /terms endpoints for valid field types.
-
-        '
-      schema:
-        type: string
-    Rows:
-      name: rows
-      in: query
-      required: false
-      description: Number of rows to return (0–1000).
-      schema:
-        type: integer
-        minimum: 0
-        maximum: 1000
-        default: 10
-    Start:
-      name: start
-      in: query
-      required: false
-      description: The starting row offset for pagination.
-      schema:
-        type: integer
-        minimum: 0
-        default: 0
+    TermsResponse:
+      type: object
+      properties:
+        status:
+          type: integer
+          example: 200
+        responseCode:
+          type: integer
+          example: 1
+        response:
+          type: object
+          properties:
+            terms:
+              type: array
+              description: Array of term strings for the requested category.
+              items:
+                type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
