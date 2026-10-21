@@ -81,6 +81,33 @@ edges:
     identity_source: wikidata P856 (labelled provenance step; Kin 2026-10-15 decision 1)
   detected_by: sweep-iiif-cultural-heritage.py
   first_seen: '2026-10-21'
+- partner_name: api.data.gov
+  partner: null
+  partner_match: register
+  type: register
+  channel: standard-directory
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://api.data.gov/
+  category: federal API program participation (shared API gateway)
+  contract_reference:
+    register: api.data.gov agency users (github.com/GSA/api.data.gov content/users.csv @ae4c262690; agency list
+      on api.data.gov)
+    standard: api.data.gov (GSA TTS federal API management service)
+    spec_file: null
+    role: api-data-gov-agency
+    registered_name: Smithsonian Institution
+    register_id: si.edu
+    matched_domain: si.edu
+    matched_by: domain
+    hosts:
+    - si.edu
+    signal_note: 'participation only: the agency serves APIs through the shared federal API gateway (api.data.gov
+      keys, rate limits, analytics). Hosts are context, never counted'
+    detected_by: sweep-us-federal-api-programs.py
+    detected: '2026-10-21'
+  detected_by: sweep-us-federal-api-programs.py
+  first_seen: '2026-10-21'
 generated: '2026-10-15'
 method: searched
 checked:
@@ -90,6 +117,15 @@ checked:
 - https://github.com/IIIF/awesome-iiif/blob/main/readme.md
 - https://iiif.io/community/consortium/members/
 - https://linked.art/community/
+- https://api.data.gov/
+- https://api.data.gov/docs/
+- https://github.com/GSA-TTS/identity-site
+- https://github.com/GSA/api.data.gov/blob/main/content/users.csv
+- https://login.gov/partners/
+- https://marketplace.fedramp.gov/
+- https://marketplace.fedramp.gov/products/
+- https://partners.login.gov/
+- https://www.gsaelibrary.gsa.gov/ElibMain/home.do
 source:
 - https://iiif.io/community/consortium/members/
 - https://github.com/IIIF/awesome-iiif/blob/main/readme.md
