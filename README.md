@@ -66,21 +66,152 @@
 
 Smithsonian Institution Open Access REST API providing search and retrieval of over 4.7 million digitized objects, images, 3D models, and metadata across 19 museums and research centers. All content is released under CC0 (public domain) and covers art and design, history and culture, and science and technology collections.
 
-**API Documentation:** https://edan.si.edu/openaccess/apidocs/  
-**Base URL:** https://api.si.edu/openaccess/api/v1.0  
-**GitHub:** https://github.com/Smithsonian  
-**Website:** https://www.si.edu/openaccess  
-**Contact:** openaccess@si.edu
+**Areas:** Museums · Open Access · Cultural Heritage · Collection · Image · 3D Models · Public Domain · CC0
 
-## APIs.json
+## Smithsonian Institution on APIs.io
 
-This repository contains the APIs.json profile for the Smithsonian Institution provider, including plans/pricing, rate limits, and FinOps documentation.
+Everything profiled for Smithsonian Institution is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/smithsonian/](https://apis.io/providers/smithsonian/)** — or go straight to one of the APIs or properties below.
 
-- [apis.yml](apis.yml) — APIs.json provider index
-- [plans/smithsonian-plans-pricing.yml](plans/smithsonian-plans-pricing.yml) — Plans and pricing details
-- [rate-limits/smithsonian-rate-limits.yml](rate-limits/smithsonian-rate-limits.yml) — Rate limit policies
-- [finops/smithsonian-finops.yml](finops/smithsonian-finops.yml) — Financial operations guidance
+### APIs (3)
 
-## Maintainer
+- [Smithsonian Institution Content API](https://apis.io/apis/smithsonian/smithsonian-content-api/) — Retrieve individual collection objects by ID or URL
+- [Smithsonian Institution Metrics API](https://apis.io/apis/smithsonian/smithsonian-metrics-api/) — Statistics about CC0 objects and media
+- [Smithsonian Institution Search API](https://apis.io/apis/smithsonian/smithsonian-search-api/) — Search across Smithsonian collections
 
-**Kin Lane** — kin@apievangelist.com
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Agentic access (1)
+
+Which operations an agent can call, which act, and which need a human in the loop.
+
+- [Smithsonian Agentic Access](https://apis.io/agentic-access/smithsonian/smithsonian-agentic-access/)
+
+#### JSON Schema (2)
+
+The data models the API reads and writes.
+
+- [Smithsonian Collection Object](https://apis.io/schemas/smithsonian/smithsonian-collection-object/)
+- [Smithsonian Search Response](https://apis.io/schemas/smithsonian/smithsonian-search-response/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Smithsonian Context](https://apis.io/jsonld/smithsonian/smithsonian-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Smithsonian Open Access API Vocabulary](https://apis.io/vocabularies/smithsonian/smithsonian-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Smithsonian Content Response Example](https://apis.io/examples/smithsonian/smithsonian-content-response-example/)
+- [Smithsonian Search Response Example](https://apis.io/examples/smithsonian/smithsonian-search-response-example/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [Smithsonian Open Access content API](https://apis.io/collections/smithsonian/open-smithsonian-content-api/)
+- [Smithsonian Open Access content metrics API](https://apis.io/collections/smithsonian/open-smithsonian-metrics-api/)
+- [Smithsonian Open Access content search API](https://apis.io/collections/smithsonian/open-smithsonian-search-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Smithsonian Institution — jsonschema rules](https://apis.io/rules/smithsonian/smithsonian-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Smithsonian Authentication](https://apis.io/security/smithsonian/smithsonian-authentication/)
+- [Smithsonian Domain Security](https://apis.io/security/smithsonian/smithsonian-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Smithsonian Plans Pricing](https://apis.io/plans/smithsonian/smithsonian-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Smithsonian Rate Limits](https://apis.io/rate-limits/smithsonian/smithsonian-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Smithsonian Finops](https://apis.io/finops/smithsonian/smithsonian-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.si.edu)
+- [Documentation](https://edan.si.edu/openaccess/apidocs/)
+- [Pricing](https://api.data.gov/signup/)
+- [Blog](https://www.si.edu/openaccess)
+- [Status](https://api.data.gov/)
+
+## API Evangelist rating
+
+**Kin Score 33.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 56.7 |
+| Contract governance | 9.8 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 18.4 |
+
+**Agent readiness 30.3** — agent-ready
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/smithsonian/](https://apis.io/providers/smithsonian/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Smithsonian Institution: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/smithsonian/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
